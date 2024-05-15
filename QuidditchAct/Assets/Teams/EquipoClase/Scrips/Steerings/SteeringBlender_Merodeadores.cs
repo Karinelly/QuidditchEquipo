@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SteeringBlender_Merodeadores : MonoBehaviour
 {
-    private Rigidbody rb;
+    public Rigidbody rb;
 
     public float maxForce = 5f;
     public float maxSpeed = 5f;
@@ -16,8 +16,12 @@ public class SteeringBlender_Merodeadores : MonoBehaviour
         rb = GetComponent<Rigidbody>();
     }
 
+    
+
     void Start()
     {
+       
+
         //obtener todos los steering asiandos al agente
         SteeringBase_Merodeadores[] arreglo = GetComponents<SteeringBase_Merodeadores>();
         for (int a = 0; a < arreglo.Length; a++)

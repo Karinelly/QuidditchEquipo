@@ -4,7 +4,6 @@ using UnityEngine;
 
 public abstract class SteeringBase_Merodeadores : MonoBehaviour
 {
-    SteeringBlender_Merodeadores blenderBase;
     public bool active = false;
 
     protected Rigidbody rigi;
@@ -17,11 +16,12 @@ public abstract class SteeringBase_Merodeadores : MonoBehaviour
     private void Awake()
     {
         MaxSpeed = GetComponent<SteeringBlender_Merodeadores>().maxSpeed;
+        rigi = GetComponent<SteeringBlender_Merodeadores>().rb;
     }
 
     private void main()
     {
-        rigi = GetComponent<Rigidbody>();
+        //rigi = GetComponent<SteeringBlender_Merodeadores>().rb;
 
     }
     public abstract Vector3 CalcularSteering();

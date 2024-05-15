@@ -196,6 +196,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f981f5b136f46c4bac3edba4533c588, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rb: {fileID: 6416999473000278913}
   maxForce: 25
   maxSpeed: 25
 --- !u!114 &2356296264171561385
@@ -212,8 +213,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   active: 0
   weigth: 1
+  Force: 0
+  MaxSpeed: 0
   Target: {fileID: 0}
-  speed: 25
 --- !u!114 &8267715235709687498
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -228,7 +230,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   active: 0
   weigth: 1
+  Force: 0
+  MaxSpeed: 0
   target: {fileID: 0}
-  speed: 5
   deceleration: 2
   distR: 0.01
