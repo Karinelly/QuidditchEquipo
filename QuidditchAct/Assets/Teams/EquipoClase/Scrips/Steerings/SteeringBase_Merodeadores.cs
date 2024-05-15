@@ -19,11 +19,6 @@ public abstract class SteeringBase_Merodeadores : MonoBehaviour
         rigi = GetComponent<SteeringBlender_Merodeadores>().rb;
     }
 
-    private void main()
-    {
-        //rigi = GetComponent<SteeringBlender_Merodeadores>().rb;
-
-    }
     public abstract Vector3 CalcularSteering();
 
 
