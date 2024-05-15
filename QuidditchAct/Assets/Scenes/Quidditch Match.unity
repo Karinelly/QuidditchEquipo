@@ -1682,7 +1682,7 @@ PrefabInstance:
     - target: {fileID: 3744152162718219330, guid: 3adc1356dd0ebb947ac24edb37dad31d,
         type: 3}
       propertyPath: m_Name
-      value: EquipoClase
+      value: Merodeadores
       objectReference: {fileID: 0}
     - target: {fileID: 4054149069680434080, guid: 3adc1356dd0ebb947ac24edb37dad31d,
         type: 3}
