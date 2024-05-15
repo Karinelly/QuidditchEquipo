@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class Team_Merodeadores : Team
 {
-    public string EquipoClaseName = "EquipoClase";
+    public string EquipoClaseName = "Merodeadores";
 
-    private int EquipoClaseTeamNumber;    // Me lo asigna el game manager
+    private int EquipoMerodeadoresTeamNumber;    // Me lo asigna el game manager
     public int getTeamNumber()
     {
-        return EquipoClaseTeamNumber;
+        return EquipoMerodeadoresTeamNumber;
     }
 
     public List<Transform> MyTeam;  // Yo quiero tener a mis jugadores en una lista
@@ -43,25 +43,25 @@ public class Team_Merodeadores : Team
 
         // Le aviso al GameManager mi nombre de equipo y 
         // me regresa el número de equipo que me toca
-        EquipoClaseTeamNumber =
+        EquipoMerodeadoresTeamNumber =
             GameManager.instancia.SetTeamName(EquipoClaseName);
 
         // Ahora que sé el número de equipo
-        if (EquipoClaseTeamNumber == 1)
+        if (EquipoMerodeadoresTeamNumber == 1)
         {
             //le puedo decir quienes son mis jugadores
             GameManager.instancia.team1Players = MyTeam;
             // Puedo saber hacia donde tiro
             rivalGoals = GameManager.instancia.team2Goals;
         }
-        else if (EquipoClaseTeamNumber == 2)
+        else if (EquipoMerodeadoresTeamNumber == 2)
         {
             GameManager.instancia.team2Players = MyTeam;
 
             rivalGoals = GameManager.instancia.team1Goals;
         }
 
-        GameManager.instancia.SetTeamColor(EquipoClaseTeamNumber, myChidoColor);
+        GameManager.instancia.SetTeamColor(EquipoMerodeadoresTeamNumber, myChidoColor);
 
         Invoke("FillLateData", 1f);
     }
