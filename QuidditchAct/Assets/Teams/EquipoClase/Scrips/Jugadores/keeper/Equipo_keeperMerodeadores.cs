@@ -24,29 +24,70 @@ public class Equipo_keeperMerodeadores : MonoBehaviour
     public GameObject InicioPorteria;
     public GameObject DMedia;
 
+    //referencia al n del team
+    public int NTeam;
+    public int NYo;
+    public Transform myKeeperStartingPosition;
+
     // Start is called before the first frame update
     void Start()
     {
+
+
         claseref = GameObject.Find("Merodeadores").GetComponent<Team_Merodeadores>();
         seek = this.gameObject.GetComponent<Seek_Merodeadores>();
 
         QuaffleRef = GameObject.Find("Quaffle");
         InicioPorteria = GameObject.Find("path1");
 
-        Paths = new GameObject[3];
-        Paths[0] = GameObject.Find("Team2Goal1");
-        Paths[1] = GameObject.Find("Team2Goal2");
-        Paths[2] = GameObject.Find("Team2Goal3");
+        NYo = gameObject.GetComponent<Player_Merodeadores>().myNumberInTeam;
 
-        DMedia = GameObject.Find("path4");
+
+        if (NTeam == 1)
+        {
+            print(NTeam);
+            Paths = new GameObject[3];
+            Paths[0] = GameObject.Find("Team2Goal1");
+            Paths[1] = GameObject.Find("Team2Goal2");
+            Paths[2] = GameObject.Find("Team2Goal3");
+
+            //mySeekerStartingPosition = GameObject.Find("Team1StartPosition (6)").GetComponent<Transform>();
+
+            DMedia = GameObject.Find("path4_2");
+        }
+        else if (NTeam == 2)
+        {
+            print(NTeam);
+            Paths = new GameObject[3];
+            Paths[0] = GameObject.Find("Team1Goal1");
+            Paths[1] = GameObject.Find("Team1Goal2");
+            Paths[2] = GameObject.Find("Team1Goal3");
+
+            //mySeekerStartingPosition = GameObject.Find("Team2StartPosition (6)").GetComponent<Transform>();
+
+            DMedia = GameObject.Find("path4");
+        }
+        else
+        {
+            print("no hay team");
+        }
+
     }
 
     public float PosQuaffle()
     {
-        DMedia = GameObject.Find("path4");
+        if (NTeam == 1)
+        {
+            DMedia = GameObject.Find("path4_2");
+        }
+        else if (NTeam == 2)
+        {
+            DMedia = GameObject.Find("path4");
+        }
+        //DMedia = GameObject.Find("path4");
         //float distQuaffle = Mathf.Abs((Mathf.Abs(Paths[0].GetComponent<Transform>().position.x)) - (Mathf.Abs(QuaffleRef.GetComponent<Transform>().position.x)));
         float distanciaQffle = Vector3.Distance(DMedia.GetComponent<Transform>().position, QuaffleRef.GetComponent<Transform>().position);
-        print(distanciaQffle);
+        //print(distanciaQffle);
         return distanciaQffle;
     }
 
@@ -55,12 +96,12 @@ public class Equipo_keeperMerodeadores : MonoBehaviour
         //La quaffle está viendo a alguno de los aros?
 
         float dot = Vector3.Dot(Paths[0].transform.forward, (QuaffleRef.GetComponent<Transform>().position - Paths[0].transform.position).normalized);
-        if (dot > 0.7f) 
-        {            
+        if (dot > 0.7f)
+        {
             Debug.Log("Quite facing");
             return Paths[0];
         }
-         dot = Vector3.Dot(Paths[1].transform.forward, (QuaffleRef.GetComponent<Transform>().position - Paths[1].transform.position).normalized);
+        dot = Vector3.Dot(Paths[1].transform.forward, (QuaffleRef.GetComponent<Transform>().position - Paths[1].transform.position).normalized);
         if (dot > 0.7f)
         {
             Debug.Log("Quite facing");
@@ -78,7 +119,7 @@ public class Equipo_keeperMerodeadores : MonoBehaviour
 
     }
 
-    
+
 
     // Update is called once per frame
     void Update()
@@ -113,6 +154,7 @@ public class Equipo_keeperMerodeadores : MonoBehaviour
 
     public void LanzarQffl()
     {
+        /*
         //QUIEN ES TARGET?
         float distcMin = float.MaxValue;
         Transform jugadorMasCercano = null;
@@ -144,7 +186,26 @@ public class Equipo_keeperMerodeadores : MonoBehaviour
         else
         {
             print("No compañero");
+        }*/
+
+
+        seek.Target = claseref.FindClosestTeammateToQuaffle();
+        print(seek.Target.gameObject);
+        if (seek.Target != null)
+        {
+            //LANZAR
+            GameManager.instancia.Quaffle.GetComponent<Quaffle>().
+                    Throw(
+                        -(seek.Target.position + gameObject.transform.position),
+                        ThrowStrength
+                        );
         }
+        else
+        {
+            print("No compañero");
+        }
+
+
         Lanzado = false;
         Detenido = false;
         Intercept = false;
@@ -159,9 +220,9 @@ public class Equipo_keeperMerodeadores : MonoBehaviour
 
     public void MoverseInicial(bool enMov)
     {
-        
+
         EnMovIdle = enMov;
-        
+
     }
 
     public void MovInterceptar(bool enMov)
@@ -173,27 +234,29 @@ public class Equipo_keeperMerodeadores : MonoBehaviour
 
     private void Inicio()
     {
-        
+        myKeeperStartingPosition = gameObject.GetComponent<Player_Merodeadores>().myStartingPosition;
         seek.active = true;
 
-        if (claseref.SeekerPos() != null)
+        if (myKeeperStartingPosition != null)
         {
-            PosInicio = claseref.SeekerPos();
-            seek.Target = claseref.SeekerPos();
+            PosInicio = myKeeperStartingPosition;
+            seek.Target = myKeeperStartingPosition;
 
         }
 
-        
+
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.CompareTag("Ball Quaffle"))
+        if (collision.gameObject.CompareTag("Ball Quaffle"))
         {
+            GameManager.instancia.FreeQuaffle();
+            GameManager.instancia.ControlQuaffle(this.gameObject);
             print("collision");
             Detenido = true;
         }
 
-        
+
     }
 }

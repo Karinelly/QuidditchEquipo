@@ -11,7 +11,7 @@ public class Merodeadores_Edo_MovIdle : Estado_Merodeadores
     private Coroutine rutina;
     private float temporizador;
 
-    
+
 
     public Merodeadores_Edo_MovIdle(FSM_Merodeadores fsm, Animator animator, Keeper_Merodeador keeper) : base(fsm, animator)
     {
@@ -26,14 +26,24 @@ public class Merodeadores_Edo_MovIdle : Estado_Merodeadores
     {
         //ejecutamos en enter de la clase base
         base.Enter();
-        
 
-        Debug.Log("En moverse");
+
         Follow.active = true;
-        Follow.Waypoint[0] = GameObject.Find("path1").transform;
-        Follow.Waypoint[1] = GameObject.Find("path2").transform;
-        Follow.Waypoint[2] = GameObject.Find("path3").transform;
-        Follow.Waypoint[3] = GameObject.Find("path4").transform;
+
+        if (KeepConexionArbol.NTeam == 2)
+        {
+            Follow.Waypoint[0] = GameObject.Find("path1").transform;
+            Follow.Waypoint[1] = GameObject.Find("path2").transform;
+            Follow.Waypoint[2] = GameObject.Find("path3").transform;
+            Follow.Waypoint[3] = GameObject.Find("path4").transform;
+        }
+        else if (KeepConexionArbol.NTeam == 1)
+        {
+            Follow.Waypoint[0] = GameObject.Find("path1_2").transform;
+            Follow.Waypoint[1] = GameObject.Find("path2_2").transform;
+            Follow.Waypoint[2] = GameObject.Find("path3_2").transform;
+            Follow.Waypoint[3] = GameObject.Find("path4_2").transform;
+        }
         //asignamos la pelota como target 
 
 
@@ -53,27 +63,7 @@ public class Merodeadores_Edo_MovIdle : Estado_Merodeadores
             fsm.CambiarEstado(Keeper.estadoIntercept);
         }
 
-        /*if (Follow.Target != null)
-        {
-            if (Vector3.Distance(
-                    Keeper.transform.position,
-                    Keeper.GetComponent<Seek_Clase>().Target.position) < 6f)
-            {
-
-                Debug.Log("Cambia de edo");
-                KeepConexionArbol.EnPorteria(true);
-
-                if(KeepConexionArbol.EnMovIdle ==true)
-                {
-                    //fsm.CambiarEstado(cazador.estadoBuscarAro);
-                }
-                //fsm.CambiarEstado(cazador.estadoBuscarAro);
-            }
-        }
-        else
-        {
-            Follow.Target = claseref.SeekerPos();
-        }*/
+        
     }
 
     public override void Exit()
@@ -83,7 +73,7 @@ public class Merodeadores_Edo_MovIdle : Estado_Merodeadores
         Keeper.GetComponent<Seek_Merodeadores>().Target = null;
 
 
-        
+
         //tengo que apagar los steerings para que se quede quieto
         SteeringBase_Merodeadores[] steerings = Keeper.GetComponents<SteeringBase_Merodeadores>();
         foreach (SteeringBase_Merodeadores steer in steerings)

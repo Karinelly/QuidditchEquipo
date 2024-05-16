@@ -33,7 +33,7 @@ public class Player_Merodeadores : MonoBehaviour
     protected virtual void Start()
     {
         // Referencia a mi equipo para conocer a mis compañeros, mi cancha y los aros rivales
-        myTeam = transform.parent.GetComponent<Team_Merodeadores >();
+        myTeam = transform.parent.GetComponent<Team_Merodeadores>();
 
         // Asignar el steering
         steering = GetComponent<SteeringBlender_Merodeadores>();
@@ -46,7 +46,7 @@ public class Player_Merodeadores : MonoBehaviour
     protected virtual void OnCollisionEnter(Collision collision)
     {
         // Si me pega un rival o una pelota
-        if(myTeam.isRival(collision.gameObject) || collision.gameObject.tag.Equals("Ball Bludger"))
+        if (myTeam.isRival(collision.gameObject) || collision.gameObject.tag.Equals("Ball Bludger"))
         {
             // Me pegaron con suficiente fuerza
             if (collision.relativeVelocity.magnitude > 2) //calibrar

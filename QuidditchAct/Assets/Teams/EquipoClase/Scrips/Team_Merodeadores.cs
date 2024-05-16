@@ -40,7 +40,8 @@ public class Team_Merodeadores : Team
         //*******************************Modificar PUNTOSREF
         //base.Start();
         //Instantiate(PuntosRef, new Vector3(0f, 0f, 0f), Quaternion.identity);
-        PuntosRef.SetActive(true);
+        PuntosRef = GameObject.Find("puntosReferencia");
+        //PuntosRef.SetActive(true);
         PuntosRef.GetComponent<Transform>().position = new Vector3(0.0f, 0.0f, 0.0f);
 
         PuntoDefenza1 = GameObject.Find("porteria2").GetComponent<Transform>();
@@ -58,8 +59,8 @@ public class Team_Merodeadores : Team
         MyTeam.Add(transform.Find("Cazador3"));
         MyTeam.Add(transform.Find("Cazador4"));
         MyTeam.Add(transform.Find("Cazador5"));
-        MyTeam.Add(transform.Find("Cazador6"));
         MyTeam.Add(transform.Find("keeper"));
+        MyTeam.Add(transform.Find("Cazador7"));
 
         Teammates = MyTeam;
 
@@ -75,12 +76,21 @@ public class Team_Merodeadores : Team
             GameManager.instancia.team1Players = MyTeam;
             // Puedo saber hacia donde tiro
             rivalGoals = GameManager.instancia.team2Goals;
+
+            GameObject.Find("keeper").GetComponent<Equipo_keeperMerodeadores>().NTeam = 1;
+
+            PuntoDefenza1 = GameObject.Find("porteria1").GetComponent<Transform>();
+
         }
         else if (EquipoMerodeadoresTeamNumber == 2)
         {
             GameManager.instancia.team2Players = MyTeam;
 
             rivalGoals = GameManager.instancia.team1Goals;
+
+            GameObject.Find("keeper").GetComponent<Equipo_keeperMerodeadores>().NTeam = 2;
+
+            PuntoDefenza1 = GameObject.Find("porteria2").GetComponent<Transform>();
         }
 
         GameManager.instancia.SetTeamColor(EquipoMerodeadoresTeamNumber, myChidoColor);
@@ -128,6 +138,7 @@ public class Team_Merodeadores : Team
 
     public Transform SeekerPos()
     {
+
         return mySeekerStartingPosition;
     }
 
@@ -137,7 +148,7 @@ public class Team_Merodeadores : Team
         //base.Update();
     }
 
-    public void FindClosestTeammateToQuaffle()
+    public Transform FindClosestTeammateToQuaffle()
     {
 
         float less = float.MaxValue;
@@ -152,6 +163,7 @@ public class Team_Merodeadores : Team
                 ClosestTeammateToQuaffle = chido;
             }
         }
+        return ClosestTeammateToQuaffle;
     }
 
     public bool TeamQuafle()
