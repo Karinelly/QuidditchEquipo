@@ -6,7 +6,7 @@ public class Cazador_BuscarPelotaState : Estado_Merodeadores
 {
     private Cazador_Clase cazador;
     private Seek_Merodeadores seek;
-
+    private Team_Merodeadores claseref;
     //private Coroutine rutinaCazar;
 
     //variable de control
@@ -16,6 +16,7 @@ public class Cazador_BuscarPelotaState : Estado_Merodeadores
     {
         this.cazador = cazador;
         seek = this.cazador.GetComponent<Seek_Merodeadores>();
+        claseref = GameObject.Find("Merodeadores").GetComponent<Team_Merodeadores>();
     }
 
     public override void Enter()
@@ -52,6 +53,7 @@ public class Cazador_BuscarPelotaState : Estado_Merodeadores
                 // Si no esta controlada, yo puedo tomar posesión de ella
                 if (GameManager.instancia.ControlQuaffle(cazador.gameObject))
                 {
+                    claseref.TengoQuaffle(cazador.gameObject);
                     // Busco anotar porque tengo la pelota
                     fsm.CambiarEstado(cazador.estadoBuscarAro);
                 }

@@ -8,11 +8,14 @@ public class Cazador_BuscarAroState : Estado_Merodeadores
 
     private Seek_Merodeadores seek;
 
+    private Team_Merodeadores claseref;
 
     public Cazador_BuscarAroState(FSM_Merodeadores fsm, Animator animator, Cazador_Clase cazador) : base(fsm, animator)
     {
         this.cazador = cazador;
         seek = this.cazador.GetComponent<Seek_Merodeadores>();
+
+        claseref = GameObject.Find("Merodeadores").GetComponent<Team_Merodeadores>();
     }
 
     public override void Enter()
@@ -45,7 +48,7 @@ public class Cazador_BuscarAroState : Estado_Merodeadores
             // Ya no tengo posesión de la pelota
             GameManager.instancia.FreeQuaffle();
 
-
+            claseref.TengoQuaffle(null);
             // Cambiar de estado
             fsm.CambiarEstado(cazador.estadoEspera);
 

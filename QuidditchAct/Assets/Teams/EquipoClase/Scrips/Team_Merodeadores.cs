@@ -20,6 +20,16 @@ public class Team_Merodeadores : Team
 
     public List<Transform> rivalGoals;
 
+    public Transform myGoals;
+    public Transform[] myProtectGoal;
+
+    public Transform PuntoDefenza1;
+    public Transform PuntoDefenza2;
+    public Vector3[] RondinPortero;
+
+    public GameObject PuntosRef;
+
+
     public List<Transform> myStartingPositions; // Saber donde inician mis jugadores
     public Transform mySeekerStartingPosition;
 
@@ -27,6 +37,18 @@ public class Team_Merodeadores : Team
 
     protected override void Start()
     {
+        //*******************************Modificar PUNTOSREF
+        //base.Start();
+        //Instantiate(PuntosRef, new Vector3(0f, 0f, 0f), Quaternion.identity);
+        PuntosRef.SetActive(true);
+        PuntosRef.GetComponent<Transform>().position = new Vector3(0.0f, 0.0f, 0.0f);
+
+        PuntoDefenza1 = GameObject.Find("porteria2").GetComponent<Transform>();
+        PuntoDefenza2 = GameObject.Find("porteria2").GetComponent<Transform>();
+
+        myProtectGoal = new Transform[3];
+
+
         //base.Start();
 
         // Voy a buscar a mis jugadores
@@ -37,7 +59,7 @@ public class Team_Merodeadores : Team
         MyTeam.Add(transform.Find("Cazador4"));
         MyTeam.Add(transform.Find("Cazador5"));
         MyTeam.Add(transform.Find("Cazador6"));
-        MyTeam.Add(transform.Find("Cazador7"));
+        MyTeam.Add(transform.Find("keeper"));
 
         Teammates = MyTeam;
 
@@ -66,6 +88,10 @@ public class Team_Merodeadores : Team
         Invoke("FillLateData", 1f);
     }
 
+    public Transform Porteria()
+    {
+        return PuntoDefenza1;
+    }
     /// <summary>
     /// Hay información que puede no estar disponible en el Start pues no sabemos el orden en que se ejecutan
     /// los equipos, por lo que puede haber información no disponible.
@@ -100,6 +126,11 @@ public class Team_Merodeadores : Team
 
     }
 
+    public Transform SeekerPos()
+    {
+        return mySeekerStartingPosition;
+    }
+
     // Update is called once per frame
     protected override void Update()
     {
@@ -121,5 +152,25 @@ public class Team_Merodeadores : Team
                 ClosestTeammateToQuaffle = chido;
             }
         }
+    }
+
+    public bool TeamQuafle()
+    {
+        if (QuaffleOwner != null)
+        {
+            Debug.Log("Tengo Quaffle");
+            return true;
+        }
+        else
+        {
+            Debug.Log("NO Tengo Quaffle");
+            return false;
+        }
+    }
+
+    public void TengoQuaffle(GameObject mia)
+    {
+        QuaffleOwner = mia;
+        Debug.Log("Lo tengo" + QuaffleOwner);
     }
 }
