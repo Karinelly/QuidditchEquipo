@@ -90,12 +90,14 @@ public class BuscarAccion_Merodeadores : GoapAction_Merodeadores
 
                 }
                     //quitar la snitch de la snitch
-                    inventarioAlmacen.QuitarRecursos(TipoDeRecurso.Snitch, 1);
+                    inventarioAlmacen.QuitarRecursos(TipoDeRecurso.Snitch, 10);
 
                     terminado = true;
+                    //GameObject Player = this.gameObject;
 
                     //Acabar el juego
-                    GameManager.instancia.SetWinner();
+                    //GameManager.instancia.SetWinner();
+                    //GameManager.instancia.GrabSnitch(gameObject);
 
                     return true;
             

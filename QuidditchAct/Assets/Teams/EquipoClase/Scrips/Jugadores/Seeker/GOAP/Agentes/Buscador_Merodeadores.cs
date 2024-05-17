@@ -19,7 +19,7 @@ public class Buscador_Merodeadores : Jugador_Merodeadores
         Dictionary<string, object> meta = new Dictionary<string, object>();
 
         //meta.Add("AtrapeLaSnitch", true);
-        meta.Add("SeAcaboElJuego", true);
+        meta.Add("AtrapeLaSnitch", true);
 
         //crear fin dek juego
         //Acabar el juego
