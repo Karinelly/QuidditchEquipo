@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class Cazador_BuscarAroState : Estado_Merodeadores
 {
-    private Cazador_Clase cazador;
+    private Cazador_Merodeadores cazador;
 
     private Seek_Merodeadores seek;
 
     private Team_Merodeadores claseref;
 
-    public Cazador_BuscarAroState(FSM_Merodeadores fsm, Animator animator, Cazador_Clase cazador) : base(fsm, animator)
+    public Cazador_BuscarAroState(FSM_Merodeadores fsm, Animator animator, Cazador_Merodeadores cazador) : base(fsm, animator)
     {
         this.cazador = cazador;
         seek = this.cazador.GetComponent<Seek_Merodeadores>();

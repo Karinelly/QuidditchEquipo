@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Cazador_BuscarPelotaState : Estado_Merodeadores
 {
-    private Cazador_Clase cazador;
+    private Cazador_Merodeadores cazador;
     private Seek_Merodeadores seek;
     private Team_Merodeadores claseref;
     //private Coroutine rutinaCazar;
@@ -12,7 +12,7 @@ public class Cazador_BuscarPelotaState : Estado_Merodeadores
     //variable de control
     // private bool cazando = false;
 
-    public Cazador_BuscarPelotaState(FSM_Merodeadores fsm, Animator animator, Cazador_Clase cazador) : base(fsm, animator)
+    public Cazador_BuscarPelotaState(FSM_Merodeadores fsm, Animator animator, Cazador_Merodeadores cazador) : base(fsm, animator)
     {
         this.cazador = cazador;
         seek = this.cazador.GetComponent<Seek_Merodeadores>();
