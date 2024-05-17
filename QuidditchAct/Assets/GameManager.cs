@@ -62,7 +62,7 @@ public class GameManager : MonoBehaviour
     public GameObject Snitch;
     public GameObject[] Bludger;
 
-    private GameObject QuaffleControllingPlayer;
+    public GameObject QuaffleControllingPlayer;
     public GameObject ActiveSignal;
     public bool isQuaffleControlled()
     {

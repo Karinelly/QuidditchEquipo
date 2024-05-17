@@ -4,6 +4,20 @@ using UnityEngine;
 
 public class Team_Merodeadores : Team
 {
+    public static Team_Merodeadores instancia = null;
+
+    void Awake()
+    {
+        if (instancia == null)
+        {
+            instancia = this;
+        }
+        else if (instancia != this)
+        {
+            Destroy(gameObject);
+        }
+    }
+
     public string EquipoClaseName = "Merodeadores";
 
     private int EquipoMerodeadoresTeamNumber;    // Me lo asigna el game manager
@@ -54,13 +68,13 @@ public class Team_Merodeadores : Team
 
         // Voy a buscar a mis jugadores
         MyTeam = new List<Transform>();
-        MyTeam.Add(transform.Find("Cazador1"));
-        MyTeam.Add(transform.Find("Cazador2"));
-        MyTeam.Add(transform.Find("Cazador3"));
-        MyTeam.Add(transform.Find("Cazador4"));
-        MyTeam.Add(transform.Find("Cazador5"));
-        MyTeam.Add(transform.Find("keeper"));
-        MyTeam.Add(transform.Find("Cazador7"));
+        MyTeam.Add(transform.Find("Cazador1_Mero"));
+        MyTeam.Add(transform.Find("Cazador2_Mero"));
+        MyTeam.Add(transform.Find("Cazador3_Mero"));
+        MyTeam.Add(transform.Find("Golpeador1_Mero"));
+        MyTeam.Add(transform.Find("Golpeador2_Mero"));
+        MyTeam.Add(transform.Find("keeper_Mero"));
+        MyTeam.Add(transform.Find("Cazador7_Mero"));
 
         Teammates = MyTeam;
 
@@ -77,7 +91,7 @@ public class Team_Merodeadores : Team
             // Puedo saber hacia donde tiro
             rivalGoals = GameManager.instancia.team2Goals;
 
-            GameObject.Find("keeper").GetComponent<Equipo_keeperMerodeadores>().NTeam = 1;
+            GameObject.Find("keeper_Mero").GetComponent<Equipo_keeperMerodeadores>().NTeam = 1;
 
             PuntoDefenza1 = GameObject.Find("porteria1").GetComponent<Transform>();
 
@@ -88,7 +102,7 @@ public class Team_Merodeadores : Team
 
             rivalGoals = GameManager.instancia.team1Goals;
 
-            GameObject.Find("keeper").GetComponent<Equipo_keeperMerodeadores>().NTeam = 2;
+            GameObject.Find("keeper_Mero").GetComponent<Equipo_keeperMerodeadores>().NTeam = 2;
 
             PuntoDefenza1 = GameObject.Find("porteria2").GetComponent<Transform>();
         }
