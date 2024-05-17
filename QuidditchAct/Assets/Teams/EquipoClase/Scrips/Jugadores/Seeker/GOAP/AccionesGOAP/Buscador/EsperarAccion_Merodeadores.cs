@@ -107,3 +107,4 @@ public class EsperarAccion_Merodeadores : GoapAction_Merodeadores
         tiempoInicio = 0f;
     }
 }
+

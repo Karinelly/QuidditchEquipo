@@ -318,7 +318,7 @@ public class GameManager : MonoBehaviour
         return false;
     }
 
-    private void SetWinner()
+    public void SetWinner()
     {
         if (team1Score > team2Score)
             winner = 1;

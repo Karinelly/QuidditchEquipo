@@ -9,6 +9,8 @@ TagManager:
   - Ball Quaffle
   - Ball Snitch
   - ChocorrolesChaser
+  - Seeker1StartPosition
+  - Manager
   layers:
   - Default
   - TransparentFX

@@ -2,8 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BuscarAccion_Meredeadores : GoapAction_Merodeadores
+public class BuscarAccion_Merodeadores : GoapAction_Merodeadores
 {
+    //acceder al game manager
+    //public GameObject Manager;
+
     //variables de ejecución
     private bool terminado = false;
     //ya inicio y cuando
@@ -11,11 +14,10 @@ public class BuscarAccion_Meredeadores : GoapAction_Merodeadores
 
     //public float duracionAccion = 0f;
     
-    public BuscarAccion_Meredeadores()
+    public BuscarAccion_Merodeadores()
     {
         //precondiciones para que se ejecute
         AddPrecondition("NoTengoLaSnitch", true);
-
         //defninir efectos
         AddEffect("AtrapeLaSnitch", true);
     }
@@ -60,6 +62,8 @@ public class BuscarAccion_Meredeadores : GoapAction_Merodeadores
     // Aqui va ir el perform
     public override bool Perform(GameObject gameObject)
     {
+        //Manager = GameObject.FindGameObjectWithTag("Manager");
+
         if (tiempoInicio == 0f)
         {
              tiempoInicio = Time.timeSinceLevelLoad;
@@ -75,19 +79,23 @@ public class BuscarAccion_Meredeadores : GoapAction_Merodeadores
             { 
 
                 //Termina la accion
-                //Deberia haber depositado la madera en el almacen y se queda sin ese recurso
                 Inventario_Merodeadores invent = gameObject.GetComponent<Inventario_Merodeadores>();
                 if(invent != null)
                 {
-                    //quitar unidades de madera
+                    //poner la snitch al buscador
                     invent.QuitarRecursos(TipoDeRecurso.Snitch, 1);
                     //Debug.Log(invent.ObtenerCantidadRecurso(TipoDeRecurso.Madera));
+
+
 
                 }
                     //quitar la snitch de la snitch
                     inventarioAlmacen.QuitarRecursos(TipoDeRecurso.Snitch, 1);
 
                     terminado = true;
+
+                    //Acabar el juego
+                    GameManager.instancia.SetWinner();
 
                     return true;
             
@@ -116,3 +124,4 @@ public class BuscarAccion_Meredeadores : GoapAction_Merodeadores
         tiempoInicio = 0f;
     }
 }
+
