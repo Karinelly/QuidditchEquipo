@@ -10,8 +10,8 @@ public class QuitarRecurso_Merodeadores : MonoBehaviour
     private void RecursoTerminado()
     {
         //Charcaer si en su inventario ya no tiene el tipo de recurso que provee
-        if (inventario.ObtenerCantidadRecurso(recurso) <= 0)
-            Destroy(gameObject);
+        //if (inventario.ObtenerCantidadRecurso(recurso) <= 0)
+            //Destroy(gameObject);
     }
     // Start is called before the first frame update
     void Awake()

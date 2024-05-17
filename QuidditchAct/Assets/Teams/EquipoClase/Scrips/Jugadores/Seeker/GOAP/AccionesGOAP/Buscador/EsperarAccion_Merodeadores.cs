@@ -15,10 +15,11 @@ public class EsperarAccion_Merodeadores : GoapAction_Merodeadores
     public EsperarAccion_Merodeadores()
     {
         //No tiene precondiciones por lo tanto se ejecuta primero
-        //AddEffect("ComezoJuego", true);
+        //AddEffect
 
         //defininir efectos
         AddEffect("NoTengoLaSnitch", true);
+        AddEffect("ComezoJuego", true);
         //AddEffect("NoTengoLaSnitch" , false);
     }
 

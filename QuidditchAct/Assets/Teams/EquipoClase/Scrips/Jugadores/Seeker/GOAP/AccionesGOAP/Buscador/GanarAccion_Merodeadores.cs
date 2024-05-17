@@ -19,7 +19,8 @@ public class GanarAccion_Merodeadores : GoapAction_Merodeadores
         AddPrecondition("AtrapeLaSnitch", true);
 
         //defininir efectos
-        AddEffect("SeAcaboElJuego", true);
+        AddEffect("ComezoJuego", false);
+        //AddEffect("SeAcaboElJuego", true);
         //AddEffect("NoTengoLaSnitch" , false);
     }
 
@@ -43,6 +44,7 @@ public class GanarAccion_Merodeadores : GoapAction_Merodeadores
             Manager.GetComponent<GameManager>().GrabSnitch(gameObject);
             return true;
         }*/
+        Debug.Log("Porque entra aqui?");
         return false; //sino no regresa nada y busca otro plan
     }
     
@@ -53,7 +55,7 @@ public class GanarAccion_Merodeadores : GoapAction_Merodeadores
         return terminado;
     }
 
-    private GameObject BuscarObjetivoCercano(Vector3 posicion)
+    /*private GameObject BuscarObjetivoCercano(Vector3 posicion)
     {
         GameObject[] targets = GameObject.FindGameObjectsWithTag("Seeker1StartPosition");
         GameObject targetCercano = null;
@@ -70,7 +72,7 @@ public class GanarAccion_Merodeadores : GoapAction_Merodeadores
             }
         }
         return targetCercano;
-    }
+    }*/
 
     // Aqui va ir el perform
     public override bool Perform(GameObject gameObject)
@@ -85,12 +87,14 @@ public class GanarAccion_Merodeadores : GoapAction_Merodeadores
         //si en el inventario es >=1
         if (invent.ObtenerCantidadRecurso(TipoDeRecurso.Snitch) >=1)
         {
+            
+            //GameManager.instancia.isGameOver();
+
+            //terminado = true;
+            //return true;
+            
             //Acabar el juego
             GameManager.instancia.GrabSnitch(gameObject);
-            GameManager.instancia.isGameOver();
-
-            terminado = true;
-            return true;
         }
         terminado = true;
         return true;
