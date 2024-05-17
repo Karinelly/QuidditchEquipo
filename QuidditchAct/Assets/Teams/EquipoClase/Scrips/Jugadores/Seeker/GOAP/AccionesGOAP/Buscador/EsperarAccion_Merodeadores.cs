@@ -19,7 +19,7 @@ public class EsperarAccion_Merodeadores : GoapAction_Merodeadores
 
         //defininir efectos
         AddEffect("NoTengoLaSnitch", true);
-        AddEffect("ComezoJuego", true);
+        //AddEffect("ComezoJuego", true);
         //AddEffect("NoTengoLaSnitch" , false);
     }
 
@@ -33,7 +33,10 @@ public class EsperarAccion_Merodeadores : GoapAction_Merodeadores
         {
             Target = target;
             return true;
+
+            Debug.Log("Hola, si estoy ejecutando bien :)");
         }
+        Debug.Log("Hola, si estoy ejecutando bien :)");
 
         return false;
     }

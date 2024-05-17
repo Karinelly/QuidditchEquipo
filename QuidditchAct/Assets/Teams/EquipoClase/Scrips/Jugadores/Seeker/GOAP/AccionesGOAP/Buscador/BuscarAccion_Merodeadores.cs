@@ -18,7 +18,7 @@ public class BuscarAccion_Merodeadores : GoapAction_Merodeadores
     {
         //precondiciones para que se ejecute
         AddPrecondition("NoTengoLaSnitch", true);
-        AddPrecondition("ComezoJuego", true);
+        //AddPrecondition("ComezoJuego", true);
 
         //defninir efectos
         AddEffect("AtrapeLaSnitch", true);
@@ -84,22 +84,21 @@ public class BuscarAccion_Merodeadores : GoapAction_Merodeadores
                 Inventario_Merodeadores invent = gameObject.GetComponent<Inventario_Merodeadores>();
                 if(invent != null)
                 {
-                    //poner la snitch al buscador
-                    invent.QuitarRecursos(TipoDeRecurso.Snitch, 1);
+                    //Quitar a la snitch de su inventario
+                    Target.GetComponent<Inventario_Merodeadores>().QuitarRecursos(TipoDeRecurso.Snitch, 10);
+
+                    //sumar la snitch al inventario del jugador para saber que ya la agarro
+                    invent.AgregarRecurso(TipoDeRecurso.Snitch, 10);
                     //Debug.Log(invent.ObtenerCantidadRecurso(TipoDeRecurso.Madera));
 
-
-
                 }
-                    //quitar la snitch de la snitch
-                    inventarioAlmacen.QuitarRecursos(TipoDeRecurso.Snitch, 10);
 
                     terminado = true;
                     //GameObject Player = this.gameObject;
 
                     //Acabar el juego
                     //GameManager.instancia.SetWinner();
-                    GameManager.instancia.GrabSnitch(gameObject);
+                    //GameManager.instancia.GrabSnitch(gameObject);
 
                     return true;
             

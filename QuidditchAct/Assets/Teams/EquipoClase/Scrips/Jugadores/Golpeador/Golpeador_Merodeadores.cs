@@ -107,14 +107,14 @@ public class Golpeador_Merodeadores : MonoBehaviour
             }
         }
 
-        Debug.Log(isQuaffleEnemy);
+        //Debug.Log(isQuaffleEnemy);
         return null;
     }
 
     public bool isEnemyQuaffle()
     {
         EnemyQuaffle();;
-        Debug.Log(isQuaffleEnemy);
+        //Debug.Log(isQuaffleEnemy);
         return isQuaffleEnemy;
     }
     

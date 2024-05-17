@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 9121855792722641380}
   - component: {fileID: 9121855792722641387}
   - component: {fileID: 9121855792722641386}
-  - component: {fileID: 8217483306697216874}
+  - component: {fileID: 6511366682753099265}
   m_Layer: 0
   m_Name: Seeker
   m_TagString: Untagged
@@ -109,7 +109,8 @@ MonoBehaviour:
   cost: 0
   Target: {fileID: 0}
   inRange: 0
---- !u!114 &8217483306697216874
+  duracionAccion: 1
+--- !u!114 &6511366682753099265
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

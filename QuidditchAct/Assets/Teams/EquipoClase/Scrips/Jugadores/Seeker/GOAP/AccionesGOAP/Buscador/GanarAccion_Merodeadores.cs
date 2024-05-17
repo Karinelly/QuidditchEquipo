@@ -19,31 +19,23 @@ public class GanarAccion_Merodeadores : GoapAction_Merodeadores
         AddPrecondition("AtrapeLaSnitch", true);
 
         //defininir efectos
-        AddEffect("ComezoJuego", false);
+        //AddEffect("ComezoJuego", false);
         //AddEffect("SeAcaboElJuego", true);
         //AddEffect("NoTengoLaSnitch" , false);
+        //AddEffect("AtrapelaSnitch", true);
     }
 
     public override bool checkPrecondition(GameObject gameObject)
     { 
-        /*GameObject target = BuscarObjetivoCercano(gameObject.transform.position);
-
+        //GameObject target = BuscarObjetivoCercano(gameObject.transform.position);
+        //El agente debe estar cerca de la snitch
+        GameObject target = BuscarObjetivoCercano(gameObject.transform.position);
         if(target != null)
         {
             target = target;
             return true;
         }
-
-        return false;
-        //El agente debe detenerse
-        //si ya cuenta con la snitch en su inventario
-        //if(target != null)
-        //ponerle el if
-        //float dist = Vector3
-        {
-            Manager.GetComponent<GameManager>().GrabSnitch(gameObject);
-            return true;
-        }*/
+        
         Debug.Log("Porque entra aqui?");
         return false; //sino no regresa nada y busca otro plan
     }
@@ -55,7 +47,7 @@ public class GanarAccion_Merodeadores : GoapAction_Merodeadores
         return terminado;
     }
 
-    /*private GameObject BuscarObjetivoCercano(Vector3 posicion)
+    private GameObject BuscarObjetivoCercano(Vector3 posicion)
     {
         GameObject[] targets = GameObject.FindGameObjectsWithTag("Seeker1StartPosition");
         GameObject targetCercano = null;
@@ -72,7 +64,7 @@ public class GanarAccion_Merodeadores : GoapAction_Merodeadores
             }
         }
         return targetCercano;
-    }*/
+    }
 
     // Aqui va ir el perform
     public override bool Perform(GameObject gameObject)

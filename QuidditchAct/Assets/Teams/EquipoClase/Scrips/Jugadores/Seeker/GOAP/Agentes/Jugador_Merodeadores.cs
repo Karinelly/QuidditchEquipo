@@ -21,7 +21,7 @@ public abstract class Jugador_Merodeadores : MonoBehaviour, IGoap_Merodeadores
         Dictionary<string, object> datos = new Dictionary<string, object>();
 
         //Agregar la snitch al inventario para ver que la atrapo y se caba el juego
-        datos.Add("AtrapolaSnitch", invent.ObtenerCantidadRecurso(TipoDeRecurso.Snitch) > 0);
+        datos.Add("AtrapeLaSnitch", invent.ObtenerCantidadRecurso(TipoDeRecurso.Snitch) > 0);
 
         return datos;
     }
