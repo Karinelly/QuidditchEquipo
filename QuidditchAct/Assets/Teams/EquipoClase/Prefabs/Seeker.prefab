@@ -12,9 +12,12 @@ GameObject:
   - component: {fileID: 9121855792722641382}
   - component: {fileID: 9121855792722641381}
   - component: {fileID: 9121855792722641380}
-  - component: {fileID: 9121855792722641387}
   - component: {fileID: 9121855792722641386}
-  - component: {fileID: 6511366682753099265}
+  - component: {fileID: 6621613362569842759}
+  - component: {fileID: 5566724952465165076}
+  - component: {fileID: 1150884527744191319}
+  - component: {fileID: 2784516142301139040}
+  - component: {fileID: 3463337803743842247}
   m_Layer: 0
   m_Name: Seeker
   m_TagString: Untagged
@@ -64,6 +67,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementSpeed: 35
   invent: {fileID: 9121855792722641380}
+  mySeekerStartingPosition: {fileID: 0}
   Manager: {fileID: 0}
 --- !u!114 &9121855792722641380
 MonoBehaviour:
@@ -78,22 +82,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Recursos: 
---- !u!114 &9121855792722641387
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9121855792722641385}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 05ae625b7d4604c48a3bd20cb4dea048, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cost: 0
-  Target: {fileID: 0}
-  inRange: 0
-  duracionAccion: 3
 --- !u!114 &9121855792722641386
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -110,7 +98,25 @@ MonoBehaviour:
   Target: {fileID: 0}
   inRange: 0
   duracionAccion: 1
---- !u!114 &6511366682753099265
+--- !u!114 &6621613362569842759
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9121855792722641385}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f01b3ac37e6e0740a7d94d9ab0121b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  steering: {fileID: 0}
+  myTeam: {fileID: 0}
+  resistence: 0.5
+  myNumberInTeam: 0
+  myStartingPosition: {fileID: 0}
+  playerPosition: 3
+--- !u!114 &5566724952465165076
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -126,6 +132,53 @@ MonoBehaviour:
   Target: {fileID: 0}
   inRange: 0
   duracionAccion: 0
+--- !u!114 &1150884527744191319
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9121855792722641385}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59f677058faa3e44085702f1f95b5eeb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 0}
+  maxForce: 5
+  maxSpeed: 5
+--- !u!114 &2784516142301139040
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9121855792722641385}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05ae625b7d4604c48a3bd20cb4dea048, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cost: 0
+  Target: {fileID: 0}
+  inRange: 0
+  duracionAccion: 3
+--- !u!54 &3463337803743842247
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9121855792722641385}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1001 &1237878151581664040
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -74,16 +74,16 @@ public class Team_Merodeadores : Team
         MyTeam.Add(transform.Find("Golpeador1_Mero"));
         MyTeam.Add(transform.Find("Golpeador2_Mero"));
         MyTeam.Add(transform.Find("keeper_Mero"));
-        MyTeam.Add(transform.Find("Cazador7_Mero"));
+        MyTeam.Add(transform.Find("Seeker_Mero"));
 
         Teammates = MyTeam;
 
         // Le aviso al GameManager mi nombre de equipo y 
-        // me regresa el número de equipo que me toca
+        // me regresa el nï¿½mero de equipo que me toca
         EquipoMerodeadoresTeamNumber =
             GameManager.instancia.SetTeamName(EquipoClaseName);
 
-        // Ahora que sé el número de equipo
+        // Ahora que sï¿½ el nï¿½mero de equipo
         if (EquipoMerodeadoresTeamNumber == 1)
         {
             //le puedo decir quienes son mis jugadores
@@ -117,9 +117,9 @@ public class Team_Merodeadores : Team
         return PuntoDefenza1;
     }
     /// <summary>
-    /// Hay información que puede no estar disponible en el Start pues no sabemos el orden en que se ejecutan
-    /// los equipos, por lo que puede haber información no disponible.
-    /// Este método llena la información después de cierto tiempo para tratar de asegurar que esté lista.
+    /// Hay informaciï¿½n que puede no estar disponible en el Start pues no sabemos el orden en que se ejecutan
+    /// los equipos, por lo que puede haber informaciï¿½n no disponible.
+    /// Este mï¿½todo llena la informaciï¿½n despuï¿½s de cierto tiempo para tratar de asegurar que estï¿½ lista.
     /// </summary>
     void FillLateData()
     {

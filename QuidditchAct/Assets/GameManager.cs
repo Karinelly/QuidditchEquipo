@@ -272,7 +272,7 @@ public class GameManager : MonoBehaviour
 
         Quaffle.GetComponent<Rigidbody>().AddForce(Vector3.up * 1500f);
     }
-    private bool gameover = false;
+    public bool gameover = false;
     public bool isGameOver()
     {
         return gameover;
@@ -282,9 +282,14 @@ public class GameManager : MonoBehaviour
 
     public bool GrabSnitch(GameObject player)
     {
+        
         // Verificar si el jugador que quiere agarrar la snitch está cerca
-        if (Vector3.Distance(player.transform.position, Snitch.transform.position) > 4f)
+        if (Vector3.Distance(player.transform.position, Snitch.transform.position) > 10f)
+        {
+            Debug.Log("Holaaaaaa ");
             return false;
+        }
+            
         // Que el juego no haya terminado
         if (gameover)
             return false;
@@ -297,7 +302,8 @@ public class GameManager : MonoBehaviour
         {
             // damos los puntos
             Score(1, 150);
-            
+
+            Debug.Log("Si entro aqui :)" + player);
             // terminamos el juego
             gameover = true;
 
@@ -310,6 +316,7 @@ public class GameManager : MonoBehaviour
             Score(2, 150);
             
             gameover = true;
+            Debug.Log("Si entro aqui :)" + player);
 
             SetWinner();
             return true;

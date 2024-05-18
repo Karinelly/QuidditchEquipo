@@ -276,6 +276,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Golpeador2_Mero
       objectReference: {fileID: 0}
+    - target: {fileID: 5937667364714082588, guid: 020eb3e30226fdd4392d12f194e3888c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5937667364714082666, guid: 020eb3e30226fdd4392d12f194e3888c,
         type: 3}
       propertyPath: m_RootOrder
@@ -1613,7 +1618,7 @@ PrefabInstance:
     - target: {fileID: 6239645889940278394, guid: 94826cf77c42cc842b33456ddccf5cb8,
         type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 6239645889940278394, guid: 94826cf77c42cc842b33456ddccf5cb8,
         type: 3}
@@ -2644,6 +2649,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Golpeador1_Mero
       objectReference: {fileID: 0}
+    - target: {fileID: 5937667364714082588, guid: 020eb3e30226fdd4392d12f194e3888c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5937667364714082666, guid: 020eb3e30226fdd4392d12f194e3888c,
         type: 3}
       propertyPath: m_RootOrder
@@ -2827,6 +2837,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1389307253}
     m_Modifications:
+    - target: {fileID: 9121855792722641381, guid: e335ed593ce3ec748a2d1ba7d1a89a49,
+        type: 3}
+      propertyPath: movementSpeed
+      value: 40
+      objectReference: {fileID: 0}
     - target: {fileID: 9121855792722641383, guid: e335ed593ce3ec748a2d1ba7d1a89a49,
         type: 3}
       propertyPath: m_RootOrder
@@ -2887,5 +2902,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: Seeker_Mero
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8217483306697216874, guid: e335ed593ce3ec748a2d1ba7d1a89a49, type: 3}
+    - {fileID: 6511366682753099265, guid: e335ed593ce3ec748a2d1ba7d1a89a49, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: e335ed593ce3ec748a2d1ba7d1a89a49, type: 3}

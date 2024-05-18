@@ -15,11 +15,10 @@ public class EsperarAccion_Merodeadores : GoapAction_Merodeadores
     public EsperarAccion_Merodeadores()
     {
         //No tiene precondiciones por lo tanto se ejecuta primero
-        //AddEffect
+        //AddEffect("ComezoJuego", true);
 
         //defininir efectos
         AddEffect("NoTengoLaSnitch", true);
-        //AddEffect("ComezoJuego", true);
         //AddEffect("NoTengoLaSnitch" , false);
     }
 
@@ -33,10 +32,7 @@ public class EsperarAccion_Merodeadores : GoapAction_Merodeadores
         {
             Target = target;
             return true;
-
-            Debug.Log("Hola, si estoy ejecutando bien :)");
         }
-        Debug.Log("Hola, si estoy ejecutando bien :)");
 
         return false;
     }
@@ -111,4 +107,3 @@ public class EsperarAccion_Merodeadores : GoapAction_Merodeadores
         tiempoInicio = 0f;
     }
 }
-

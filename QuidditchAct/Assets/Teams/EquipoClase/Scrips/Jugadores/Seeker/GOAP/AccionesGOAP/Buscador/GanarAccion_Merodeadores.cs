@@ -69,25 +69,7 @@ public class GanarAccion_Merodeadores : GoapAction_Merodeadores
     // Aqui va ir el perform
     public override bool Perform(GameObject gameObject)
     { 
-        if (tiempoInicio == 0f)
-        {
-            tiempoInicio = Time.timeSinceLevelLoad;
-            Debug.Log("Regresando al punto de inicio, devoré");
-        }
-        //para ganar se debe atrapar la snitch(tenerla en el inventario)
-        Inventario_Merodeadores invent = gameObject.GetComponent<Inventario_Merodeadores>();
-        //si en el inventario es >=1
-        if (invent.ObtenerCantidadRecurso(TipoDeRecurso.Snitch) >=1)
-        {
-            
-            //GameManager.instancia.isGameOver();
-
-            //terminado = true;
-            //return true;
-            
-            //Acabar el juego
-            GameManager.instancia.GrabSnitch(gameObject);
-        }
+        GameManager.instancia.GrabSnitch(this.gameObject);
         terminado = true;
         return true;
     }

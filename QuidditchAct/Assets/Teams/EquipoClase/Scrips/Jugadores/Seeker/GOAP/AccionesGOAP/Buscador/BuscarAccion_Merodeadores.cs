@@ -12,7 +12,7 @@ public class BuscarAccion_Merodeadores : GoapAction_Merodeadores
     //ya inicio y cuando
     private float tiempoInicio = 0f;
 
-    public float duracionAccion = 1f;
+    public float duracionAccion = 0f;
     
     public BuscarAccion_Merodeadores()
     {
@@ -51,6 +51,13 @@ public class BuscarAccion_Merodeadores : GoapAction_Merodeadores
                 //Encontramos un objetivo mas cerca
                 targetCercano = objetivo;
                 distanciaMenor = dist;
+
+                //si ya la atrapo
+                /*if(dist <= 2f)
+                {
+                    GameManager.instancia.GrabSnitch(objetivo);
+
+                }*/
             }
         }
         return targetCercano;
@@ -66,24 +73,18 @@ public class BuscarAccion_Merodeadores : GoapAction_Merodeadores
     {
         //Manager = GameObject.FindGameObjectWithTag("Manager");
 
-        if (tiempoInicio == 0f)
-        {
              tiempoInicio = Time.timeSinceLevelLoad;
              Debug.Log("Buscando la Snitch");
-        }
+        
            
         //cundo haya pasado el tiempo9 para cumplir la accion, realiza sus cambios
-        if(Time.timeSinceLevelLoad > tiempoInicio + duracionAccion)
-        {
+        
             //Para tomara Herramienta hay que ver si hay disponibles
             Inventario_Merodeadores inventarioAlmacen = Target.GetComponent<Inventario_Merodeadores>();
-            if(inventarioAlmacen.ObtenerCantidadRecurso(TipoDeRecurso.Snitch) > 0)
-            { 
-
+            
                 //Termina la accion
                 Inventario_Merodeadores invent = gameObject.GetComponent<Inventario_Merodeadores>();
-                if(invent != null)
-                {
+                
                     //Quitar a la snitch de su inventario
                     Target.GetComponent<Inventario_Merodeadores>().QuitarRecursos(TipoDeRecurso.Snitch, 10);
 
@@ -91,25 +92,23 @@ public class BuscarAccion_Merodeadores : GoapAction_Merodeadores
                     invent.AgregarRecurso(TipoDeRecurso.Snitch, 10);
                     //Debug.Log(invent.ObtenerCantidadRecurso(TipoDeRecurso.Madera));
 
-                }
 
                     terminado = true;
                     //GameObject Player = this.gameObject;
 
                     //Acabar el juego
                     //GameManager.instancia.SetWinner();
-                    //GameManager.instancia.GrabSnitch(gameObject);
+                    GameManager.instancia.GrabSnitch(this.gameObject);
 
                     return true;
-            
-            }
+        
             /*else
             {
                 //si no hay herramienta en el almacen, no se puede completar la tarea
                 return false;
 
             }*/
-        }
+        
         return true;
     }
 

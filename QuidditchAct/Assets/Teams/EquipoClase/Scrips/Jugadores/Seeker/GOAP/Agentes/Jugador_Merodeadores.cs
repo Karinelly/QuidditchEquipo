@@ -15,6 +15,10 @@ public abstract class Jugador_Merodeadores : MonoBehaviour, IGoap_Merodeadores
 
     public Inventario_Merodeadores invent;
 
+    //referencia a la posicion de inicio
+    public Transform mySeekerStartingPosition;
+    
+
     //para devolver la info que usan las acciones y precondiciones 
     public Dictionary<string, object> GetWorldState()
     {
@@ -64,7 +68,8 @@ public abstract class Jugador_Merodeadores : MonoBehaviour, IGoap_Merodeadores
     // Start is called before the first frame update
     void Start()
     {
-        
+        //buscar la posicion de inicio del seeker
+        mySeekerStartingPosition = gameObject.GetComponent<Player_Merodeadores>().myStartingPosition;
     }
 
     // Update is called once per frame
